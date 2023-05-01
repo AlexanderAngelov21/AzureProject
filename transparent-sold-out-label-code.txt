@@ -1,0 +1,29 @@
+bool productSoldOut = true; // replace with your own sold out condition
+
+            if (productSoldOut)
+            {
+                string imagePath = Server.MapPath("~/images/car001.jpg");
+                string labelPath = Server.MapPath("~/images/sold-out-label.png");
+                Bitmap bitmap = new Bitmap(imagePath);
+
+                using (Bitmap labelBitmap = new Bitmap(labelPath))
+                using (Graphics graphics = Graphics.FromImage(bitmap))
+                {
+                    // Center the label image on the product image
+                    int labelX = (bitmap.Width - labelBitmap.Width) / 2;
+                    int labelY = (bitmap.Height - labelBitmap.Height) / 2;
+
+                    // Make the label background transparent
+                    Color transparentColor = Color.FromArgb(0, 255, 255, 255);
+                    labelBitmap.MakeTransparent(transparentColor);
+
+                    graphics.DrawImage(labelBitmap, new Point(labelX, labelY));
+                }
+
+                Image1.ImageUrl = "~/images/car001-sold-out.jpg";
+                bitmap.Save(Server.MapPath(Image1.ImageUrl));
+            }
+            else
+            {
+               Image1.ImageUrl = "~/images/car001.jpg";
+            }

@@ -20,6 +20,7 @@ namespace AleksandarWebDevelopment2Project
     
     using Microsoft.AspNetCore.Identity.UI.Services;
     using AleksandarWebDevelopment2Project.Services;
+    using Microsoft.AspNetCore.Authentication.Cookies;
 
     public class Startup
     {
@@ -48,6 +49,7 @@ namespace AleksandarWebDevelopment2Project
                 {
                     options.CheckConsentNeeded = context => true;
                     options.MinimumSameSitePolicy = SameSiteMode.None;
+                    
                 });
 
             services.Configure<CookieTempDataProviderOptions>(
@@ -84,7 +86,7 @@ namespace AleksandarWebDevelopment2Project
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             *///});
-
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -106,7 +108,7 @@ namespace AleksandarWebDevelopment2Project
                 app.UseExceptionHandler("/Error/{0}");
                 app.UseHsts();
             }
-
+         
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
