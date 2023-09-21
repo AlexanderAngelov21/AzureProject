@@ -111,11 +111,11 @@ namespace AleksandarWebDevelopment2Project
          
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
             //app.UseCors("CorsPolicy");
-            app.UseCookiePolicy();
             app.UseRouting();
-
+        
             app.UseAuthentication();
             app.UseAuthorization();
 
